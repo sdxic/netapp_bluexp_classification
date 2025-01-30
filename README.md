@@ -42,7 +42,7 @@ Ensure the customer has created a NSS (NetApp Support Site) account.  Once they 
 ![NSS Account 2](images/nss-account2.png)
 
 2. From a browser outside of the lab, navigate to https://mail.siriussdx.com.
-    * Use sdx_bluexp#@cdwsdx.com and PASSWORD of (Password provided to you by Tanissa) (Note: Replace # with number provided to you by Tanissa)
+    * Use sdx_bluexp#@cdwsdx.com and PASSWORD (Password provided to you by Tanissa) (Note: Replace # with number provided to you by Tanissa)
     * Retrieve the One Time Passcode (OTP) 
     * Return to the NetApp Sign In tab
         * Confirm email address 
@@ -51,7 +51,8 @@ Ensure the customer has created a NSS (NetApp Support Site) account.  Once they 
 ![NSS OTP](images/nss-otp.png)
     * Confirm Customer is selected
     * Populate the Contact Information
-        * First Name - Lab-<your initials> example: LabTF
+        * First Name - Lab-"your initials" 
+            * example: LabTF
         * Last Name - SDX
         * Office Phone - 800-000-0000
         * Company Name - SDX Labs
@@ -71,7 +72,8 @@ Ensure the customer has created a NSS (NetApp Support Site) account.  Once they 
     * Be sure to use the same email address you just used to create the NSS account
         * Email - sdx_bluexp#@cdwsdx.com (Note: Replace # with number provided to you by Tanissa)
         * Password - Lab Password found under My Labs
-        * Full Name - Lab<your intitials> SDX example: LabTF SDX
+        * Full Name - Lab"your intitials" SDX 
+            * example: LabTF SDX
         * Company - SDX Labs
         * Country - United States
     * Click Next  
@@ -86,7 +88,7 @@ Ensure the customer has created a NSS (NetApp Support Site) account.  Once they 
 ![BlueXP Sign up](images/bluexp-signup4.png)
 
 4. From a browser outside of the lab, navigate to https://mail.siriussdx.com.
-    * Use sdx_bluexp#@cdwsdx.com and PASSWORD of (Password provided to you by Tanissa) (Note: Replace # with number provided to you by Tanissa)
+    * Use sdx_bluexp#@cdwsdx.com and PASSWORD (Password provided to you by Tanissa) (Note: Replace # with number provided to you by Tanissa)
     * Find the email from service@console.bluexp.netapp.com
     * Click Verify my email  
 ![BlueXP Verify](images/bluexp-verify.png)
@@ -106,6 +108,8 @@ Ensure the customer has created a NSS (NetApp Support Site) account.  Once they 
         * Supply the OTP
         * Click Continue
         * Click Create
+    * Do not be alarmed when you get the following message, because this is a Lab organization within NetApp, you can not associate the BlueXP account with the NSS account at this time.  This exercise was just to get your comfortable with the process.
+ ![BlueXP Verify](images/bluexp-org-fail.png)
 
 ## Part 3: Prepare BlueXP Connector VM
 
@@ -205,7 +209,7 @@ The installer that is available on the NetApp Support Site may be an earlier ver
     * Type here to Search on the bottom left and type in winscp
     * Click on the WinSCP app  
 ![WinSCP](images/winscp1.png)
-    * In Host name, supply the IP address of the BlueXP Connector - 10.242.<3rd octet of Lab Subnet>.70
+    * In Host name
         * Host name - IP address of the BlueXP Connector - 10.242.<3rd octet of Lab Subnet>.70
         * User name - sdx
         * Password - Lab Password found under My Labs
@@ -224,20 +228,20 @@ The installer that is available on the NetApp Support Site may be an earlier ver
     * From the BlueXP Connector CLI, copy and paste the following command:
         * ls
             * Note: The version is used in the next command
-    * Copy and paste the following command where <version> is the version downloaded:
-        * sudo chmod +x BlueXP-Connector-Cloud-<version>  
+    * Copy and paste the following command where "version" is the version downloaded:
+        * sudo chmod +x BlueXP-Connector-Cloud-"version"  
 ![Chmod Connector](images/chmod-connector.png)
 
 5. Run the installation script.
-    * Copy and past the following command where <version> is the version downloaded (Note: Proxy and cacert are optional parameters and not needed in this lab):
-        *  sudo ./BlueXP-Connector-Cloud-<version>  
+    * Copy and past the following command where "version" is the version downloaded (Note: Proxy and cacert are optional parameters and not needed in this lab):
+        *  sudo ./BlueXP-Connector-Cloud-"version"  
 ![Install Connector](images/install-connector.png)
     * This may take a few minutes to complete
 
 ## Part 5: Set up the BlueXP Connector
 
 1. On the lab jumpbox, open browser or open New Tab.
-    * Access https://<BlueXP Connector IP address>
+    * Access https://"BlueXP Connector IP address"
         * 10.242.<3rd octet of Lab Subnet>.70
     * Click Advanced
     * Click Proceed to IP  
@@ -247,7 +251,7 @@ The installer that is available on the NetApp Support Site may be an earlier ver
     * Click Next
         * Password - Lab Password found under My Labs
     * Click Log in
-    * Provide Connector name of BlueXPConnector<your initials>
+    * Provide Connector name of BlueXPConnector"your initials"
         * Connector name example - BlueXPConnectorTF
     * Confirm Organization name is SDX Labs
     * Click Let's Start  
@@ -358,7 +362,7 @@ sudo apt-get update
 
 ## Part 7: Install BlueXP Classification
 
-CONFIRM THIS FOR CLASSIFICATION - The installer that is available on the NetApp Support Site may be an earlier version.  After installation, Classification automatically updates itself if a new version is available.
+The installer that is available on the NetApp Support Site may be an earlier version.  After installation, Classification automatically updates itself if a new version is available.
 
 Note: All installation activities are logged when installing BlueXP classification. If you run into any issues during installation, you can view the contents of the installation audit log. It is written to /opt/netapp/install_logs/.
 
@@ -372,7 +376,7 @@ Note: All installation activities are logged when installing BlueXP classificati
     * Check I have read the End User License Agreement
     * Click ACCEPT & CONTINUE  
 ![Classification Download](images/classification-download2.png)
-    * Click DOWNLOAD DATASENSE-INSTALLER-<version>.tar.gz  
+    * Click DOWNLOAD DATASENSE-INSTALLER-"version".tar.gz  
 ![Classification Download](images/classification-download3.png)
 
 2. Open WinSCP application on lab jumpbox.
@@ -388,9 +392,9 @@ Note: All installation activities are logged when installing BlueXP classificati
     * Click Accept in the Warning
 
 3. Copy the downloaded BlueXP Classification software on the lab jumpbox to the BlueXP Classification VM.
-    * Move the DATASENSE-INSTALLER-<version>.tar.gz file from Downloads to Documents in Finder  
+    * Move the DATASENSE-INSTALLER-"version".tar.gz file from Downloads to Documents in Finder  
 ![WinSCP](images/winscp3-class.png)
-    * In WinSCP drag DATASENSE-INSTALLER-<version>.tar.gz in the left panel over to the BlueXP Classification VM /home/sdx directory panel on the right, into the open area
+    * In WinSCP drag DATASENSE-INSTALLER-"version".tar.gz in the left panel over to the BlueXP Classification VM /home/sdx directory panel on the right, into the open area
         * Click OK in the Upload prompt  
 ![WinSCP](images/winscp4.png)
 
@@ -398,8 +402,8 @@ Note: All installation activities are logged when installing BlueXP classificati
     * From the BlueXP Classification CLI, copy and paste the following command:
         * ls
             * Note: The version is used in the next command
-    * Copy and paste the following command where <version> is the version downloaded:
-        * tar -xzf DATASENSE-INSTALLER-<version>.tar.gz  
+    * Copy and paste the following command where "version" is the version downloaded:
+        * tar -xzf DATASENSE-INSTALLER-"version".tar.gz  
 ![Unzip Classification](images/unzip-class.png)
 
 ## Part 8: Set up BlueXP Classification
@@ -524,16 +528,16 @@ We will create a storage virtual machine/SVM for SMB from BlueXP System Manager.
     * A new windows explorer window will open and you should see the new share we created.
             * Right click anywhere in blank area of the share and create a new text document.  
                 * Give the file a name of PII
-                * Open PII and paste the following text:
-000-26-6781
-324-00-6781
-324-26-0000
-111-11-1111
-999-99-9999
-123-45-6789
-test@company.com
-11/11/1911
-12/12/1912
+                * Open PII and paste the following text:  
+000-26-6781  
+324-00-6781  
+324-26-0000  
+111-11-1111  
+999-99-9999  
+123-45-6789  
+test@company.com  
+11/11/1911  
+12/12/1912  
                 * Save it  
 ![Create PII File](images/pii-file.png)
 
