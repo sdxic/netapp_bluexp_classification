@@ -28,7 +28,7 @@ In this lab the NetApp datastore is already configured and attached in vCenter. 
 
 ## Part 2: Create NSS (NetApp Support Site) and BlueXP account
 
-Ensure the customer has created a NSS (NetApp Support Site) account.  Once they have a NSS account, they will create a BlueXP account and attach the BlueXP account to their NSS account.  When preparing for engagment, send customer email for them to complete this in advance if possible as it can take up to 24 hours for NSS account creations.  You will need a customer-level account for full access to support features within NetApp platforms like BlueXP.
+Ensure the customer has created a NSS (NetApp Support Site) account.  Once they have a NSS account, they will create a BlueXP account and attach the BlueXP account to their NSS account.  When preparing for engagement, send customer email for them to complete this in advance if possible as it can take up to 24 hours for NSS account creations.  You will need a customer-level account for full access to support features within NetApp platforms like BlueXP.
 
 1. From a browser outside of the lab, navigate to https://mysupport.netapp.com/site.
     * Click Create New Account under Get Started on the right side
@@ -42,7 +42,7 @@ Ensure the customer has created a NSS (NetApp Support Site) account.  Once they 
 ![NSS Account 2](images/nss-account2.png)
 
 2. From a browser outside of the lab, navigate to https://mail.siriussdx.com.
-    * Use sdx_bluexp#@cdwsdx.com and PASSWORD of SDNlab01@ (Note: Replace # with number provided to you by Tanissa)
+    * Use sdx_bluexp#@cdwsdx.com and PASSWORD of (Password provided to you by Tanissa) (Note: Replace # with number provided to you by Tanissa)
     * Retrieve the One Time Passcode (OTP) 
     * Return to the NetApp Sign In tab
         * Confirm email address 
@@ -69,8 +69,8 @@ Ensure the customer has created a NSS (NetApp Support Site) account.  Once they 
     * Click Sign up, under the Next button to create a BlueXP account  
 ![BlueXP Sign up](images/bluexp-signup.png)
     * Be sure to use the same email address you just used to create the NSS account
-        * Email - sdx_bluexp3@cdwsdx.com
-        * Password - SDNlab01@
+        * Email - sdx_bluexp#@cdwsdx.com (Note: Replace # with number provided to you by Tanissa)
+        * Password - Lab Password found under My Labs
         * Full Name - Lab<your intitials> SDX example: LabTF SDX
         * Company - SDX Labs
         * Country - United States
@@ -86,7 +86,7 @@ Ensure the customer has created a NSS (NetApp Support Site) account.  Once they 
 ![BlueXP Sign up](images/bluexp-signup4.png)
 
 4. From a browser outside of the lab, navigate to https://mail.siriussdx.com.
-    * Use sdx_bluexp#@cdwsdx.com and PASSWORD of SDNlab01@ (Note: Replace # with number provided to you by Tanissa)
+    * Use sdx_bluexp#@cdwsdx.com and PASSWORD of (Password provided to you by Tanissa) (Note: Replace # with number provided to you by Tanissa)
     * Find the email from service@console.bluexp.netapp.com
     * Click Verify my email  
 ![BlueXP Verify](images/bluexp-verify.png)
@@ -371,7 +371,7 @@ Note: All installation activities are logged when installing BlueXP classificati
         * If redirected to log in, supply the email address and password used to create NSS account in Part 2 or you can use your own NSS account if you have one
     * Check I have read the End User License Agreement
     * Click ACCEPT & CONTINUE  
-![Classification Download](classification-download2.png)
+![Classification Download](images/classification-download2.png)
     * Click DOWNLOAD DATASENSE-INSTALLER-<version>.tar.gz  
 ![Classification Download](images/classification-download3.png)
 
@@ -484,7 +484,6 @@ We will create a storage virtual machine/SVM for SMB from BlueXP System Manager.
 3. Create SMB SVM.
     * Click Storage from left panel, and then Click Storage VMs
     * From the Storage VMs screen we will Click Add  
-![Create SMB SVM](smb-canvas.png) GET OLD ONE
     * A new panel will open with the title of Add storage VM.  We will give the Storage VM a name and configure protocols.
         * Storage VM Name - fileserver
         * Access protocol - Enable SMB/CIFS
@@ -493,7 +492,7 @@ We will create a storage virtual machine/SVM for SMB from BlueXP System Manager.
         * Password - Use the password listed within the my labs secion.
         * Server Name - fileserver
         * Active Directory Domain - This will be the domain your lab is configured with.  You can get this information by opening a command prompt and typing ipconfig /all.  The DNS Suffix Search List is the Active Directory Domain you will input.  
-![Create SMB SVM](images/smb-add.png) KEEP
+![Create SMB SVM](images/smb-add.png)
             * We will leave the Organizational Unit defaulted to CN=Computers
             * Domains - This will be the same Active Directory Domain name you gathered before
             * Name Servers - You can get this IP address from the ipconfig /all output from before.  Copy of the value of DNS Servers.
@@ -501,7 +500,7 @@ We will create a storage virtual machine/SVM for SMB from BlueXP System Manager.
             * Subnet Mask - Should auto populate, if not click off the IP address field.
             * Gateway - Should auto populate, if not click off the IP address field.
             * Broadcast Domain and Port - Default  
-![Create SMB SVM](images/part2_step1d2.png) KEEP
+![Create SMB SVM](images/smb-add2.png)
     * Verify all of the data is correct and Click Save.  If everything was put in correctly the new fileserver will be created and it will take you back to the Storage VMs page.  At this point you've created a new SVM and joined it to the domain. This new SVM has been configured to serve the SMB/CIFS protocol.
 
 4. Create a new volume and network share that users can access and write files to.
@@ -513,13 +512,13 @@ We will create a storage virtual machine/SVM for SMB from BlueXP System Manager.
         * Click the Save button  
 ![Create Share](images/smb-share.png)
 
-5. Map a network drive to the share we created and write a file to it.
-        * Click the windows folder icon on the taskbar
-        * Click This PC and then on the top of the windows explorer window click Computer and then map network drive and click map network drive.
-        * In the Map Network Drive put in the following values.
-            * Drive - Z:
-            * Folder - \\\fileserver\share
-            * Leave Reconnect at sign-in selected
+5. Map a network drive to the share we created and write a file to it.  
+        * Click the windows folder icon on the taskbar  
+        * Click This PC and then on the top of the windows explorer window click Computer and then map network drive and click map network drive  
+        * In the Map Network Drive put in the following values  
+            * Drive - Z:  
+            * Folder - \\\fileserver\share  
+            * Leave Reconnect at sign-in selected  
             * Click Finish  
 ![Network Drive](images/smb-network-drive.png)
     * A new windows explorer window will open and you should see the new share we created.
@@ -538,12 +537,12 @@ test@company.com
                 * Save it  
 ![Create PII File](images/pii-file.png)
 
-6. Download PowerShell scripts to create files and simulate Classification FEATURES.
-        * https://github.com/sdxic/netapp_security_hardening/blob/master/create%20files.ps1
-        * Right click the create files PowerShell script
-        * Click run with PowerShell
-            * Type Y for yes if prompted about Execution Policy Change
-        * This will create files in the share you viewed in the previous step.  After the script completes browse the share and verify you can see files.
+6. Download PowerShell scripts to create files and simulate Classification FEATURES.  
+        * https://github.com/sdxic/netapp_bluexp_classification/blob/master/bluexp-create-files.ps1  
+        * Right click the create files PowerShell script  
+        * Click run with PowerShell  
+            * Type Y for yes if prompted about Execution Policy Change  
+        * This will create files in the share you viewed in the previous step.  After the script completes browse the share and verify you can see files.  
 
 ## Part 10: Classification Review
 
@@ -565,9 +564,9 @@ test@company.com
         * Note: Classification needs access to AD  
 ![Classification Review](images/class-review2.png)
     * Click Add Active Directory
-        * Username - administrator@<Domain Name will be the domain your lab is configured with>
+        * Username - administrator@"Domain Name will be the domain your lab is configured with"
             * You can get this information by opening a command prompt and typing ipconfig /all.  The DNS Suffix Search List is the Active Directory Domain you will input.
-            * administrator@lab242-231.lab
+            * example: administrator@lab242-231.lab
         * Password - Lab Password found under My Labs
         * Domain Name - Use your lab domain from Username above
             * lab242-231.lab
@@ -579,9 +578,9 @@ test@company.com
     * Click Add CIFS Creditials  
 ![Classification Review](images/class-add-cifs.png)
     * CIFS Creditials
-        * Username - administrator@<Domain Name will be the domain your lab is configured with>
+        * Username - administrator@"Domain Name will be the domain your lab is configured with"
             * You can get this information by opening a command prompt and typing ipconfig /all.  The DNS Suffix Search List is the Active Directory Domain you will input.
-            * administrator@lab242-231.lab
+            * example: administrator@lab242-231.lab
         * Password - Lab Password found under My Labs
     * Click Save  
 ![Classification Review](images/class-add-cifs2.png)
