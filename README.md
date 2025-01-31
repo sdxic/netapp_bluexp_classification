@@ -115,7 +115,7 @@ Ensure the customer has created a NSS (NetApp Support Site) account.  Once they 
 
 When preparing for engagement, if possible send an email to the customer in advance with the OS and networking requirements to deploy the BlueXP Connector on-prem.   https://docs.netapp.com/us-en/bluexp-setup-admin/task-install-connector-on-prem.html
 
-1. On the lab jumpbox, launch the vCenter shortcut.  
+1. On the lab jumpbox, close Server Manager and launch the vCenter shortcut.  
 ![vCenter Shortcut](images/vcenter-shortcut.png)
     * Click Don't sign in when prompted to Sign in to Chrome
     * Click Skip to set default browser
@@ -141,28 +141,28 @@ When preparing for engagement, if possible send an email to the customer in adva
 ![Putty App](images/putty-open.png)
         * Accept the PuTTY Security Alert
     * Login as:
-        * Username - sdx
+        * Username - sdx (Note: this is case sensitive)
         * Password - Lab Password found under My Labs
             * Note: The sudo password is also the Lab Password found under My Labs
 
 4. Uninstall old versions of Docker.
-    * Type the following command: 
-        * for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+    * Type the following command:  
+for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done  
             * sudo password for sdx - Lab Password found under My Labs
     * Note: apt-get might report that you have none of these packages installed, this is okay  
 ![Uninstall Docker](images/uninstall-docker.png)
 
 5. Install Docker using the apt repository - there are different installation methods available here: https://docs.docker.com/engine/install/ubuntu/.  For this lab use Install using the apt repository.
-    * Copy and Paste the following commands: 
-sudo apt-get update
-sudo apt-get install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc  
+    * Copy and Paste the following commands:  
+sudo apt-get update  
+sudo apt-get install ca-certificates curl  
+sudo install -m 0755 -d /etc/apt/keyrings  
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc  
+sudo chmod a+r /etc/apt/keyrings/docker.asc    
 ![Install Docker](images/install-docker.png)
     * Type Y to continue and press enter  
 ![Install Docker](images/install-docker2.png)
-    * Copy and Paste the following commands:
+    * Copy and Paste the following commands, can copy all lines at once:  
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
@@ -171,21 +171,21 @@ sudo apt-get update
 ![Install Docker](images/install-docker3.png)
 
 6. Install Specific version of the Docker packages.
-    * Copy and Paste the following commands to list the available versions:
-        * apt-cache madison docker-ce | awk '{ print $3 }'
+    * Copy and Paste the following commands to list the available versions:  
+apt-cache madison docker-ce | awk '{ print $3 }'
     * Note: The latest version and update the version string in the next step.  In this example, the latest version is 5:27.5.1-1~ubuntu.24.04~noble.  
 ![Docker Version](images/docker-version.png)
-    * Copy and Paste the following commands after updating VERSION_STRING if needed:
-        * VERSION_STRING=5:27.5.1-1~ubuntu.24.04~noble
-        * sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin  
+    * Copy and Paste the following commands after updating VERSION_STRING if needed:  
+VERSION_STRING=5:27.5.1-1~ubuntu.24.04~noble
+sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin  
 ![Docker Version](images/docker-version2.png)
     * Type Y to continue and press enter
-    * To confirm Docker is enabled and running Copy and Paste following command:
-        * sudo systemctl enable docker && sudo systemctl start docker  
+    * To confirm Docker is enabled and running Copy and Paste following command:  
+sudo systemctl enable docker && sudo systemctl start docker  
 ![Docker Version](images/docker-version3.png)
-    * Copy and Paste the following commands to remove variables on the host that may be set prior to Connector Install:
-        * unset http_proxy
-        * unset https_proxy  
+    * Copy and Paste the following commands to remove variables on the host that may be set prior to Connector Install:  
+unset http_proxy  
+unset https_proxy  
 ![Docker Version](images/docker-version4.png)
 
 ## Part 4: Install BlueXP Connector
@@ -225,16 +225,16 @@ The installer that is available on the NetApp Support Site may be an earlier ver
 ![WinSCP](images/winscp4.png)
 
 4. Assign permissions to run the script on the BlueXP Connector VM.
-    * From the BlueXP Connector CLI, copy and paste the following command:
-        * ls
+    * From the BlueXP Connector CLI, copy and paste the following command:  
+ls
             * Note: The version is used in the next command
-    * Copy and paste the following command where "version" is the version downloaded:
-        * sudo chmod +x BlueXP-Connector-Cloud-"version"  
+    * Copy and paste the following command where "version" is the version downloaded:  
+sudo chmod +x BlueXP-Connector-Cloud-"version"  
 ![Chmod Connector](images/chmod-connector.png)
 
 5. Run the installation script.
-    * Copy and past the following command where "version" is the version downloaded (Note: Proxy and cacert are optional parameters and not needed in this lab):
-        *  sudo ./BlueXP-Connector-Cloud-"version"  
+    * Copy and past the following command where "version" is the version downloaded (Note: Proxy and cacert are optional parameters and not needed in this lab):  
+sudo ./BlueXP-Connector-Cloud-"version"  
 ![Install Connector](images/install-connector.png)
     * This may take a few minutes to complete
 
@@ -319,14 +319,14 @@ When preparing for engagement, if possible send an email to the customer in adva
             * Note: The sudo password is also the Lab Password found under My Labs
 
 4. Uninstall old versions of Docker.
-    * Type the following command: 
-        * for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+    * Type the following command:  
+for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
             * sudo password for sdx - Lab Password found under My Labs
     * Note: apt-get might report that you have none of these packages installed, this is okay  
 ![Uninstall Docker](images/uninstall-class-docker.png)
 
 5. Install Docker using the apt repository - there are different installation methods available here: https://docs.docker.com/engine/install/ubuntu/.  For this lab use Install using the apt repository.
-    * Copy and Paste the following commands: 
+    * Copy and Paste the following commands:  
 sudo apt-get update
 sudo apt-get install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -334,30 +334,30 @@ sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyring
 sudo chmod a+r /etc/apt/keyrings/docker.asc
     * Type Y to continue and press enter  
 ![Install Docker](images/install-class-docker.png)
-    * Copy and Paste the following commands:
+    * Copy and Paste the following commands, can copy all lines at once:  
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \  
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \  
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null  
 sudo apt-get update  
 ![Install Docker](images/install-class-docker3.png)
 
 6. Install Specific version of the Docker packages.
-    * Copy and Paste the following commands to list the available versions:
-        * apt-cache madison docker-ce | awk '{ print $3 }'
+    * Copy and Paste the following commands to list the available versions:  
+apt-cache madison docker-ce | awk '{ print $3 }'
     * Note: The latest version and update the version string in the next step.  In this example, the latest version is 5:27.5.1-1~ubuntu.24.04~noble.  
 ![Docker Version](images/docker-version.png)
-    * Copy and Paste the following commands after updating VERSION_STRING if needed:
-        * VERSION_STRING=5:27.5.1-1~ubuntu.24.04~noble
-        * sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin  
+    * Copy and Paste the following commands after updating VERSION_STRING if needed:  
+VERSION_STRING=5:27.5.1-1~ubuntu.24.04~noble  
+sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin  
 ![Docker Version](images/docker-class-version2.png)
     * Type Y to continue and press enter
-    * To confirm Docker is enabled and running Copy and Paste following command:
-        * sudo systemctl enable docker && sudo systemctl start docker  
+    * To confirm Docker is enabled and running Copy and Paste following command:  
+sudo systemctl enable docker && sudo systemctl start docker  
 ![Docker Version](images/docker-class-version3.png)
-    * Copy and Paste the following commands to remove variables on the host that may be set prior to Connector Install:
-        * unset http_proxy
-        * unset https_proxy  
+    * Copy and Paste the following commands to remove variables on the host that may be set prior to Connector Install:  
+unset http_proxy
+unset https_proxy  
 ![Docker Version](images/docker-version4.png)
 
 ## Part 7: Install BlueXP Classification
@@ -399,11 +399,11 @@ Note: All installation activities are logged when installing BlueXP classificati
 ![WinSCP](images/winscp4.png)
 
 4. Unzip the installer file on the BlueXP Classification VM.
-    * From the BlueXP Classification CLI, copy and paste the following command:
-        * ls
+    * From the BlueXP Classification CLI, copy and paste the following command:  
+ls  
             * Note: The version is used in the next command
-    * Copy and paste the following command where "version" is the version downloaded:
-        * tar -xzf DATASENSE-INSTALLER-"version".tar.gz  
+    * Copy and paste the following command where "version" is the version downloaded:  
+tar -xzf DATASENSE-INSTALLER-"version".tar.gz  
 ![Unzip Classification](images/unzip-class.png)
 
 ## Part 8: Set up BlueXP Classification
@@ -424,33 +424,33 @@ Note: All installation activities are logged when installing BlueXP classificati
 ![Classification Set up](images/setup-class2.png)
     * Click Deploy under On Prem in the Install Classification location  
 ![Classification Set up](images/setup-class3.png)
-    * Copy the command in Step 2  
+    * Copy the command From Step 2
 ![Classification Set up](images/setup-class4.png)
 
 3. Due to a limitation in the lab, Step 3 ONLY needs to be completed in the lab.  If the BlueXP Classification instance was deployed per the Classification requirements, this would not have to be done at customer site.
-    * Copy and paste the following commands in the CLI of the BlueXP Classification VM
-        * sudo lsblk
-        * sudo parted
-        * resizepart 3 500GB
-        * quit
-        * sudo lsblk  
+    * Copy and paste the following commands in the CLI of the BlueXP Classification VM  
+sudo lsblk  
+sudo parted  
+resizepart 3 500GB  
+quit  
+sudo lsblk    
 ![Resize Classification](images/resize-class.png)
-        * sudo pvresize /dev/sda3
-        * sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
-        * sudo lsblk  
+sudo pvresize /dev/sda3  
+sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv  
+sudo lsblk  
 ![Resize Classification](images/resize-class2.png)
-        * sudo df -h
-        * sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv  
+sudo df -h  
+sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv  
 ![Resize Classification](images/resize-class3.png)
 
 4. Run installer on BlueXP Classification VM.
     * Paste the command from Step 2 above in the CLI of the BlueXP Classification VM
-    * Example of the command: 
-        * sudo ./install.sh -a account-kD3yKqHG -c YiVQRi0ztoFTaJ6seJnlyYwKvw1qagoIclients -t eyJhbGciOiJSUzI1NiI...
-        * Sudo password for sdx - Lab Password found under My Labs
-        * BlueXP Connector IP - 10.242.<3rd octet of Lab Subnet>.70
-        * Type n to not use proxy
-        * type y to install Classification despite the listed limitations  
+    * Example of the command:  
+sudo ./install.sh -a account-kD3yKqHG -c YiVQRi0ztoFTaJ6seJnlyYwKvw1qagoIclients -t eyJhbGciOiJSUzI1NiI...  
+        * Sudo password for sdx - Lab Password found under My Labs  
+        * BlueXP Connector IP - 10.242.<3rd octet of Lab Subnet>.70  
+        * Type N to not use proxy  
+        * Type Y to install Classification despite the listed limitations  
 ![Installer Classification](images/installer-class.png)
             * Note: Depoying Classification may take up to 15 minutes, you can monitor the status from BlueXP too
     * Once install is complete, use BlueXP to continue the configuration in Step 6  
