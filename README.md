@@ -1,6 +1,6 @@
 # NetApp BlueXP Connector and Classification
 
-In this lab, you will deploy the NetApp BlueXP Connector and configure classification to manage and organize your data effectively. You'll learn how to integrate BlueXP with your OnTap environment and apply classification policies to enhance data visibility and compliance. This hands-on lab is designed for users with basic NetApp experience, focusing on streamlining data management and security.
+In this lab, you will deploy the NetApp BlueXP Connector and configure classification to manage and organize your data effectively. You'll learn how to integrate BlueXP with your ONTAP environment and apply classification policies to enhance data visibility and compliance. This hands-on lab is designed for users with basic NetApp experience, focusing on streamlining data management and security.
 
 In this lab the NetApp datastore is already configured and attached in vCenter.  This lab caters to individuals looking to setup BlueXP account and then installing the connector and classification.
 
